@@ -49,7 +49,7 @@ stages:
 
   jobs:
   - deployment: Deploy
-    displayName: Deploy
+    displayName: DeployQA
     pool: $(vmImageName)
     environment: 'malkiatsazuredevopsgithubacraksapp1.default'
     strategy:
@@ -79,7 +79,7 @@ stages:
 
   jobs:
   - deployment: Deploy
-    displayName: Deploy
+    displayName: DeployDev
     pool: $(vmImageName)
     environment: 'aks-demo.dev'
     strategy:
