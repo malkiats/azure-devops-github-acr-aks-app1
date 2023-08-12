@@ -50,8 +50,7 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
+    pool: $(vmImageName)
     environment: 'malkiatsazuredevopsgithubacraksapp1.default'
     strategy:
       runOnce:
