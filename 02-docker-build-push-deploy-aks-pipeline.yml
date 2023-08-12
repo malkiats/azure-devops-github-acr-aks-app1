@@ -43,7 +43,7 @@ stages:
     - upload: manifests
       artifact: manifests
 
-- stage: Deploy
+- stage: DeployQA
   displayName: Deploy stage
   dependsOn: Build
 
@@ -73,15 +73,15 @@ stages:
               containers: '$(containerRegistry)/$(imageRepository):$(tag)'
               imagePullSecrets: '$(imagePullSecret)'
 
-- stage: Deploy
+- stage: DeployDev
   displayName: Deploy stage
-  dependsOn: Build
+  dependsOn: DeployQA
 
   jobs:
   - deployment: Deploy
     displayName: Deploy
     pool: $(vmImageName)
-    environment: 'malkiatsazuredevopsgithubacraksapp1.default'
+    environment: 'aks-demo.dev'
     strategy:
       runOnce:
         deploy:
