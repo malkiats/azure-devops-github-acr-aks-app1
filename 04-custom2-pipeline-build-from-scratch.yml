@@ -21,17 +21,18 @@ stages:
     displayName: Build Job
     pool: $(vmImageName)
     steps:
+
     # Task-1: Build Docker Image and push to Azure Container Registry ACR
     - task: Docker@2
       inputs:
         containerRegistry: 'manual-acr-mslab'
-        repository: 'custom2aksnginxapp2'
+        repository: 'custom2aksnginxapp1'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
           $(Build.SourceVersion)
-    # Task-2: Copy kube-manifest files to Build Artifact Directory         
+## Publish Artifacts pipeline code in addition to Build and Push          
     - bash: echo Contents in System Default Working Directory; ls -R $(System.DefaultWorkingDirectory)        
     - bash: echo Before copying Contents in Build Artifact Directory; ls -R $(Build.ArtifactStagingDirectory)        
     # Task-2: Copy files (Copy files from a source folder to target folder)
