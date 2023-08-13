@@ -25,7 +25,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'manual-acr-mslab'
-        repository: 'custom2aksnginxapp1'
+        repository: 'custom2aksnginxapp2'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
