@@ -19,7 +19,6 @@ variables:
   imageRepository: 'custom2aksnginxapp1'
   containerRegistry: 'manual-acr-mslab'
   dockerfilePath: '**/Dockerfile'
-  tag: '$(Build.BuildId)'
   imagePullSecret: 'acrmslab6706371a-auth'
 
 
@@ -41,7 +40,7 @@ stages:
         Dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
-          
+
 ## Publish Artifacts pipeline code in addition to Build and Push          
     - bash: echo Contents in System Default Working Directory; ls -R $(System.DefaultWorkingDirectory)        
     - bash: echo Before copying Contents in Build Artifact Directory; ls -R $(Build.ArtifactStagingDirectory)        
