@@ -32,15 +32,13 @@ stages:
           $(tag)
           $(Build.SourceVersion)
       
-    - task: PublishBuildArtifacts@1
+    - task: PublishPipelineArtifact@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'test'
-        publishLocation: 'Container'
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'test'
+        publishLocation: 'pipeline'
 
     # Task-2: Copy kube-manifest files to Build Artifact Directory         
     - bash: echo Contents in System Default Working Directory; ls -R $(System.DefaultWorkingDirectory)        
     - bash: echo Before copying Contents in Build Artifact Directory; ls -R $(Build.ArtifactStagingDirectory)        
-
-
 
